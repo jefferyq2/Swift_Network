@@ -110,7 +110,7 @@ nw.bind(PORT)
 //accept the first address wanting to connect
 var client        = nw.accept()
 var clientAddress = String(
-	format:"%02x",
+	format:"%08x",
 	Int( client!.sock.sin_addr.s_addr )
 )
 print("Server > Accepted a client (address \"\(clientAddress)\").");
