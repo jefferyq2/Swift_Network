@@ -4,8 +4,9 @@
         Raw Pointers is an utility program that allows you to use collections of
     bytes (considered as UInt8) easilly in Swift.
 
-    15/04/2021 > [0.1.0] :
+    17/04/2021 > [0.1.0] :
     - Created raw_pointer.swift.
+	- Added some useful String conversion methods.
 
     BUGS : .
     NOTES : .
@@ -150,11 +151,15 @@ class RawPointer {
 
 
 
-	//reset
+	//reset - free
 	func reset() {
 		for i in 0..<self.length {
 			self._set(i, UInt8(0))
 		}
+	}
+
+	func free() {
+		self.ptr.deallocate()
 	}
 
 
@@ -176,6 +181,25 @@ class RawPointer {
 		return String(charArr)
 	}
 
+	func setString(_ str:String) {
+
+		//create utf8 UInt8 array
+		let uint8Arr : [UInt8] = Array(str.utf8)
+
+		//reset pointer data
+		self.reset()
+
+		//fill pointer with string data
+		for i in 0..<str.count {
+			self.ptr.advanced(
+				by: i * MemoryLayout<UInt8>.stride
+			).storeBytes(
+				of: UInt8(uint8Arr[i]),
+				as: UInt8.self
+			)
+		}
+	}
+
 	func compare(_ str:String, _ length:Int) -> Bool {
 
 		//create a utf8 UInt8 array
@@ -193,3 +217,4 @@ class RawPointer {
 		return true
 	}
 }
+

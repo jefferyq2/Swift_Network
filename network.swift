@@ -178,7 +178,7 @@ class Network {
 		}
 
 		//create new client instance
-		var client_nw : Network? = Network(NETWORK__CLIENT)
+		let client_nw : Network? = Network(NETWORK__CLIENT)
 
 		//cast sock from sockaddr_in into sockaddr
 		var client_sock_sockaddr : sockaddr = UnsafeRawPointer( &client_nw!.sock ).advanced(
