@@ -1,35 +1,35 @@
 #executables
-run: src/include_NW.h network.swift 1_server.swift 2_client.swift again
+run: lib/include_NW.h lib/raw_pointer.swift src/network.swift src/1_server.swift src/2_client.swift again
 
 	@#SERVER
 
 	@#create temporary all-in-one swift source file
-	@cat src/raw_pointer.swift >  run1.swift
-	@cat network.swift         >> run1.swift
-	@cat 1_server.swift        >> run1.swift
+	@cat lib/raw_pointer.swift >  run1.swift
+	@cat src/network.swift     >> run1.swift
+	@cat src/1_server.swift    >> run1.swift
 
 	@#compilation
 	@echo "compiling server :"
-	@echo "    src/raw_pointer.swift"
-	@echo "    network.swift"
-	@echo "    1_server.swift"
-	swiftc run1.swift -import-objc-header src/include_NW.h
+	@echo "    lib/raw_pointer.swift"
+	@echo "    src/network.swift"
+	@echo "    src/1_server.swift"
+	swiftc run1.swift -import-objc-header lib/include_NW.h
 
 
 
 	@#CLIENT
 
 	@#create temporary all-in-one swift source file
-	@cat src/raw_pointer.swift >  run2.swift
-	@cat network.swift         >> run2.swift
-	@cat 2_client.swift        >> run2.swift
+	@cat lib/raw_pointer.swift >  run2.swift
+	@cat src/network.swift     >> run2.swift
+	@cat src/2_client.swift    >> run2.swift
 
 	@#compilation
 	@echo "compiling client :"
-	@echo "    src/raw_pointer.swift"
-	@echo "    network.swift"
-	@echo "    2_client.swift"
-	swiftc run2.swift -import-objc-header src/include_NW.h
+	@echo "    lib/raw_pointer.swift"
+	@echo "    src/network.swift"
+	@echo "    src/2_client.swift"
+	swiftc run2.swift -import-objc-header lib/include_NW.h
 
 
 

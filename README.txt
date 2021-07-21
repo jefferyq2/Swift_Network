@@ -2,8 +2,8 @@ This program is a simple utility library that allows you to create
 and use TCP networks in IPv4 very easily in Swift.
 
 Two programs have been made as a demonstration :
-> 1_server.swift
-> 2_client.swift
+> src/1_server.swift
+> src/2_client.swift
 
 More information about this library are available in network.swift.
 
