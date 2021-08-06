@@ -1,17 +1,17 @@
 #executables
-run: lib/include_NW.h lib/raw_pointer.swift src/network.swift src/1_server.swift src/2_client.swift again
+run: lib/include_NW.h lib/raw_pointer.swift lib/network.swift src/1_server.swift src/2_client.swift again
 
 	@#SERVER
 
 	@#create temporary all-in-one swift source file
 	@cat lib/raw_pointer.swift >  run1.swift
-	@cat src/network.swift     >> run1.swift
+	@cat lib/network.swift     >> run1.swift
 	@cat src/1_server.swift    >> run1.swift
 
 	@#compilation
 	@echo "compiling server :"
 	@echo "    lib/raw_pointer.swift"
-	@echo "    src/network.swift"
+	@echo "    lib/network.swift"
 	@echo "    src/1_server.swift"
 	swiftc run1.swift -import-objc-header lib/include_NW.h
 
@@ -21,13 +21,13 @@ run: lib/include_NW.h lib/raw_pointer.swift src/network.swift src/1_server.swift
 
 	@#create temporary all-in-one swift source file
 	@cat lib/raw_pointer.swift >  run2.swift
-	@cat src/network.swift     >> run2.swift
+	@cat lib/network.swift     >> run2.swift
 	@cat src/2_client.swift    >> run2.swift
 
 	@#compilation
 	@echo "compiling client :"
 	@echo "    lib/raw_pointer.swift"
-	@echo "    src/network.swift"
+	@echo "    lib/network.swift"
 	@echo "    src/2_client.swift"
 	swiftc run2.swift -import-objc-header lib/include_NW.h
 
