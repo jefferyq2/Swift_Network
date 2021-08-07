@@ -5,7 +5,7 @@ Two programs have been made as a demonstration :
 > src/1_server.swift
 > src/2_client.swift
 
-More information about this library are available in network.swift.
+More information about this library are available in lib/network.swift.
 
 
 
